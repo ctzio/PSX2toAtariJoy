@@ -1,31 +1,31 @@
-#PSX2toAtariJoy
-Homemade PS2 Controller to Atari Joystick adapter using Arduino uno R3. This Project is based on the PS2X_lib example code.
-
-
-This sketch is now complete. You can hook it up to your atari according to the design in the images. In words:
+<h1>PSX2toAtariJoy</h1>
+<p>Homemade PS2 Controller to Atari Joystick adapter using Arduino uno R3. This Project is based on the PS2X_lib example code.</p>
+<p>This sketch is now complete. You can hook it up to your atari according to the design in the images. In words:</p>
 
 
 
-PS2 Controller - Arduino
+<p>PS2 Controller - Arduino</p>
 
-*1 ----------------- 8
-*2 ----------------- 12
-*4 ----------------- GND
-*5 ----------------- 3.3V
-*6 ----------------- 11
-*7 ----------------- 10
+<ul>
+<li>1 ----------------- 8</li>
+<li>2 ----------------- 12</li>
+<li>4 ----------------- GND</li>
+<li>5 ----------------- 3.3V</li>
+<li>6 ----------------- 11</li>
+<li>7 ----------------- 10<</li>
+</ul
 
+<p>Atari Port - Arduino</p>
 
-Atari Port - Arduino
-
-
-*1 -------------- 7
-*2 -------------- 6
-*3 -------------- 5
-*4 -------------- 4
-*6 -------------- 2
-*7 -------------- Vin
-*8 -------------- GND
+<ul>
+<li>1 -------------- 7</li>
+<li>2 -------------- 6</li>
+<li>3 -------------- 5</li>
+<li>4 -------------- 4</li>
+<li>6 -------------- 2</li>
+<li>7 -------------- Vin</li>
+<li>8 -------------- GND</li>
+  </ul>
 
 
 Upload the code and you are done.
