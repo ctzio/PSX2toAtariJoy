@@ -20,7 +20,7 @@ void setup(){
 
  //CHANGES for v1.6 HERE!!! **************PAY ATTENTION*************
   
- error = ps2x.config_gamepad(10,12,11,13, true, true);   //setup pins and settings:  GamePad(clock, command, attention, data, Pressures?, Rumble?) check for error
+ error = ps2x.config_gamepad(10,12,11,8, true, true);   //setup pins and settings:  GamePad(clock, command, attention, data, Pressures?, Rumble?) check for error
  
  if(error == 0){
    Serial.println("Found Controller, configured successful");
@@ -62,25 +62,18 @@ void setup(){
   pinMode(4, OUTPUT);
   pinMode(2, OUTPUT);
 
+  digitalWrite(2, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(7, HIGH);
   
 
   
 }
 
 void loop(){
-   /* You must Read Gamepad to get new values
-   Read GamePad and set vibration values
-   ps2x.read_gamepad(small motor on/off, larger motor strenght from 0-255)
-   if you don't enable the rumble, use ps2x.read_gamepad(); with no values
-   
-   you should call this at least once a second
-   */
-  digitalWrite(2, HIGH);
-  digitalWrite(4, HIGH);
-  digitalWrite(5, HIGH);
-  digitalWrite(6, HIGH);
-  digitalWrite(7, HIGH);
-  ; 
+
    
    
  if(error == 1) //skip loop if no controller found
@@ -91,42 +84,43 @@ void loop(){
   
     ps2x.read_gamepad(false, vibrate);          //read controller and set large motor to spin at 'vibrate' speed
     
-    if(ps2x.Button(PSB_START))                   //will be TRUE as long as button is pressed
-         Serial.println("Start is being held");
-    if(ps2x.Button(PSB_SELECT))
-         Serial.println("Select is being held");
+
          
-         
-     if(ps2x.Button(PSB_PAD_UP)) {         //will be TRUE as long as button is pressed
-       Serial.print("Up held this hard: ");
-       Serial.println(ps2x.Analog(PSAB_PAD_UP), DEC);
+     if(ps2x.Button(PSB_PAD_UP) || ps2x.Button(PSB_RED)) {         //will be TRUE as long as button is pressed
        digitalWrite(up, LOW);
+       }
+      else {
+        digitalWrite(up, HIGH);
       }
       if(ps2x.Button(PSB_PAD_RIGHT)){
-       Serial.print("Right held this hard: ");
-        Serial.println(ps2x.Analog(PSAB_PAD_RIGHT), DEC);
         digitalWrite(right, LOW);
       }
+        else {
+        digitalWrite(right, HIGH);
+      }
+      
       if(ps2x.Button(PSB_PAD_LEFT)){
-       Serial.print("LEFT held this hard: ");
-        Serial.println(ps2x.Analog(PSAB_PAD_LEFT), DEC);
         digitalWrite(left, LOW);
       }
+      else {
+        digitalWrite(left, HIGH);
+      }
       if(ps2x.Button(PSB_PAD_DOWN)){
-       Serial.print("DOWN held this hard: ");
-     Serial.println(ps2x.Analog(PSAB_PAD_DOWN), DEC);
      digitalWrite(down, LOW);
-      }   
+      }  
+      else {
+        digitalWrite(down, HIGH);
+      }
+       
       if(ps2x.Button(PSB_BLUE)){
-       Serial.println("Fire held this hard: ");
        digitalWrite(fire, LOW);
-     
-    
       }   
-  
+      else {
+        digitalWrite(fire, HIGH);
+      }
 
- 
- 
- delay(50);
-     
 }
+     
+ 
+
+     
